@@ -1,55 +1,33 @@
 # Lab-Ex.-No---6-Design-simulate-an-environment-for-Welding-using-Robo-DK
-
-
  
 ## AIM:
   To Design & simulate an environment for welding operation using robodk 
-
 ## Software  Required:
 Robodk
-
 ### Theory
 When using robots for any process, the method requires amending to accommodate automation. The same is true of welding, which uses several tools not found in its manual equivalent. People don’t need programming the way robotic welders do.
-
 The robot itself has an arm that can move in three dimensions for rectilinear types and through more planes with articulating versions. A wire feeder sends the filler wire to the robot as it needs it for a welding job. A high-heat torch at the end of the arm melts metal to enable the welding process. Because the temperatures reach thousands of degrees, using robots for this process keeps people safer.
-
 Certified human operators still need to remain close to the robots. These workers should hold certification from the American Welding Society, AWS, which certify not only manual welders but also robotic welding arm operators. The operators program the controller using a teach pendant. This device sets new programs, moves the arm and changes parameters for the process. To start the welding, the operator uses the buttons on the operation box.
-
 The tool in the robotic arm heats to melt metal to conjoin the desired pieces. As needed, a wire feeder delivers more metal wire to the arm and torch. When awaiting the next parts to weld, the arm moves the torch to the cleaner to clean any metal splatters from the arm, which could solidify in place without this process.
-
 Because one of the primary reasons to have robotic welders is protecting human workers, these automated systems come with multiple safety features. Arc shields prevent the high-heat arc from mixing with oxygen. Enclosed areas protect operators from the temperatures and bright light.
 ### ROBOTIC WELDING PROCESSES
 Welding requires a high level of education and skill. However, the number of professional welders does not meet the needs of the industry. According to the American Welding Society, by 2022, the industry will experience a shortage of 450,000 welders. Instead of letting critical projects these workers would complete fall behind, robots can pick up the slack.
-
 Robots automate the process, which ensures higher accuracy, less waste and faster operation. With the range of machinery available, robots adapt to a wide variety of welding processes including arc, resistance, spot, TIG and more.
-
-
 1. ARC WELDING
 One of the most common types of robotic welding is the arc process. In this method, an electric arc generates extreme heat, up to 6,500 degrees Fahrenheit, which melts the metal. Molten metal joins parts together, solidifying into a stable connection after cooling. When a project requires a large volume of accurately conjoined metals, arc welding serves as an ideal application.
-
 2. RESISTANCE WELDING
 When projects need heat-treating or a way to lower costs, robots may use resistance welding. During this process, a current of electricity creates a pool of molten metal as it passes between the two metal bases. This molten metal joins the pieces of metal together.
-
 3. SPOT WELDING
 Some materials resist electrical currents, precluding them from other forms of welding. This situation frequently occurs in the automotive industry for piecing together parts of an automobile body. To overcome the issue, robotic welders use a variation of resistance welding to connect a pair of thin metal sheets in a single spot.
-
 4. TIG WELDING
 Robot welding applications requiring high levels of precision may require TIG welding. This method also goes by the term gas tungsten arc welding or GTAW. An electric arc passes between a tungsten electrode and the metal base.
-
 5. MIG WELDING
 Gas metal arc welding, also known as GMAW or MIG, is a fast and straightforward method that uses a high level of deposition. A wire moves continuously to the heated tip of the welder, which melts the wire, allowing for a large amount of molten metal to drip onto the base for joining the base to another piece.
-
 6. LASER WELDING
 When welding projects require accuracy for a high volume of parts, laser welding is the preferred method of metal joining. Small parts, such as jewelry or medical components often use laser welding.
-
 7. PLASMA WELDING
 Plasma welding offers the most significant degree of flexibility because the operator can easily change both the speed of gas passing through the nozzle and the temperature.
-
-
-
 ### Procedure 
-
-
  Import the 3d model in to the project  :
 1. Go to the RoboDK tab in SolidWorks and select Auto Setup.
 2. Select the welding paths. Make sure to also select the faces as they help orient the robot tool.
@@ -85,7 +63,6 @@ then Simulate to simulate the result.
 12. If you use the scroll bar, the new tool orientation facilitates the cable management of the tool; it has no
 risk of interfering with the robot.
 ![image](https://user-images.githubusercontent.com/36288975/173730700-8782988f-bb79-465e-95f4-e4041b740c70.png)
-
 1. Put back the default normal approach of 100 mm.
 2. Add a movement, for example, along Z.
 3. Set it to 50 mm.
@@ -96,4 +73,80 @@ risk of interfering with the robot.
 
 ### Results of simulation 
 
+### program
+
+import sys
+
+import os
+
+sys.path.append(os.path.abspath(r"""C:/Users/Jayashree Rao/Downloads/apps/RoboDK/Posts/""")) # temporarily add path to POSTS folder
+
+
+from Doosan_Robotics import *
+
+
+try:
+
+  from robodk.robomath import PosePP as p
+
+except:
+
+  #This will be removed in future versions of RoboDK
+
+  from robodk import PosePP as p
+
+
+
+print('Total instructions: 9')
+
+r = RobotPost(r"""Doosan_Robotics""",r"""Doosan Robotics A0509""",6, axes_type=['R','R','R','R','R','R'], ip_com=r"""127.0.0.1""", api_port=20500, prog_ptr=2207833217456,
+
+robot_ptr=2207866642176)
+
+r.ProgStart(r"""Prog1""")
+
+r.RunMessage(r"""Program generated by RoboDK v5.4.1 for Doosan Robotics A0509 on 16/06/2022 21:13:52""",True)
+
+r.RunMessage(r"""Using nominal kinematics.""",True)
+
+r.MoveJ(p(-3.04895,-73.119,506.25,-40,0,180),[30.7146,14.5849,19.949,-107.346,-135.635,130.071],[1,1,0])
+
+r.MoveJ(p(-45.0575,-55.1425,506.25,-40,0,-180),[38.117,9.56376,26.9833,-113.724,-130.902,129.559],[1,1,0])
+
+r.MoveJ(p(-64.4577,-25.4224,506.25,-40,0,180),[45.0784,10.5441,25.6814,-117.64,-127.32,132.237],[1,1,0])
+
+r.MoveJ(p(-70.9703,7.58154,506.25,-40,0,-180),[50.216,14.7508,19.7004,-119.632,-125.562,135.941],[1,1,0])
+
+r.MoveJ(p(-63.7476,38.3737,506.25,-45,0,180),[53.106,14.2671,20.4222,-124.682,-121.646,138.559],[1,1,0])
+
+r.MoveJ(p(-41.2798,62.8588,506.25,-50,0,-180),[53.546,14.9204,19.4452,-127.936,-119.353,140.979],[1,1,0])
+
+r.MoveJ(p(-2.25533,73.6122,506.25,-55,0,-180),[50.5473,15.5671,18.4613,-129.057,-118.683,142.082],[1,1,0])
+
+r.MoveJ(p(40.306,60.6497,506.25,-55,0,-180),[43.4938,21.9554,7.73618,-122.234,-124.231,143.662],[1,1,0])
+
+r.MoveJ(p(-3.04895,-73.119,506.25,-40,0,180),[30.7146,14.5849,19.949,-107.346,-135.635,130.071],[1,1,0])
+r.ProgFinish(r"""Prog1""")
+
+r.ProgSave(r"""C:/Users/Jayashree Rao/OneDrive/Documents/RoboDK""",r"""Prog1""",True,r"""C:/Users/Jayashree Rao/Downloads/apps/RoboDK/Other/VSCodium/VSCodium.exe""")
+
+
+###  simulation 
+
+![image](https://user-images.githubusercontent.com/89122599/175552858-1a9d851e-4685-4181-86cc-62252b914a53.png)
+
+
+![image](https://user-images.githubusercontent.com/89122599/175552903-d1d1a0a7-0013-4d11-a5c3-c69d9b9d9747.png)
+
+![image](https://user-images.githubusercontent.com/89122599/175552953-6d7bf20e-9902-4eb2-9b5e-9e80ba77aef3.png)
+
+![image](https://user-images.githubusercontent.com/89122599/175552989-4d19b91c-ceb9-44e1-8339-bb5e5411d1e4.png)
+
+![image](https://user-images.githubusercontent.com/89122599/175553093-7aa25e37-cdca-41d4-b6c5-324320600ac3.png)
+
+![image](https://user-images.githubusercontent.com/89122599/175553123-284f38a3-1424-4aae-8f57-a3fada9a75b3.png)
+
+## Result
+
+Thus, an environment for welding operation using robodk is Designed & simulated.
 
